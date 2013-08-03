@@ -51,14 +51,14 @@ namespace CruiseControl
 					}
 					//fire
 					foreach (Coordinate firecood in fireableCoords) {
-						if (totalCommandsAvl > 0) {
+						//if (totalCommandsAvl > 0) {
 							if (isClutter)
 								cmds.Add (new Command (){vesselid = myStatus.Id, action = "power_up:" + clutterID, coordinate = new Coordinate { X = firecood.X, Y = firecood.Y }});
 							else
 								cmds.Add (new Command (){vesselid = myStatus.Id, action = "fire", coordinate = new Coordinate { X = firecood.X, Y = firecood.Y }});
 
-							totalCommandsAvl--;
-						}
+							//totalCommandsAvl--;
+						//}
 					}
 
 				}
@@ -73,6 +73,9 @@ namespace CruiseControl
 					CollectClutter (_currentBoard.ClusterMissleLocation);
 
 				//move random
+				int maxX = _currentBoard.BoardMaxCoordinate.X;
+				int maxY = _currentBoard.BoardMaxCoordinate.Y;
+
 				string direction = RandomChoice(new string[]{"north","south","east","west"});
 				foreach(var myVessel in _currentBoard.MyVesselStatuses)
 				{
